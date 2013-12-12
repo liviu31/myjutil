@@ -13,8 +13,8 @@ import java.util.Set;
 public class MiscCollections {
 
     /**
-     * For reporting sometimes is useful to get a few examples. There is also something like com.google.common.collect.Iterables.get
-     * but will get you only one element
+     * For reporting sometimes is useful to get a few examples. like com.google.common.collect.Iterables.get
+     * but will get you more elements
      *
      * @param values List, Set, Collection...
      * @param n number of example
