@@ -17,8 +17,8 @@ public class MiscCollections {
      * but will get you more elements
      *
      * @param values List, Set, Collection...
-     * @param n number of example
-     * @param <T> type
+     * @param n      number of examples
+     * @param <T>    type
      * @return Collection<T> n elements in iterator orders
      */
     public static <T> Collection<T> examples(Iterable<T> values, int n) {
@@ -34,6 +34,15 @@ public class MiscCollections {
         return r;
     }
 
+    /**
+     * like guava Strings.isNullOrEmpty
+     * @param collection
+     * @return
+     */
+    public static boolean isNullOrEmpty(Collection<?> collection) {
+        return (collection == null) || collection.isEmpty();
+    }
+
     public static <T> Iterable<T> noNull(Iterable<T> itbl, String message) {
         if (itbl == null) {
             throw new IllegalArgumentException(message);
@@ -46,11 +55,11 @@ public class MiscCollections {
         return itbl;
     }
 
-    public static <T> List<T> noneNull(List<T> itbl, String message){
-        return (List<T>) noNull(itbl, message);
+    public static <T> List<T> noneNull(List<T> list, String message) {
+        return (List<T>) noNull(list, message);
     }
 
-    public static <T> Set<T> noneNull(Set<T> itbl, String message){
+    public static <T> Set<T> noneNull(Set<T> itbl, String message) {
         return (Set<T>) noNull(itbl, message);
     }
 
