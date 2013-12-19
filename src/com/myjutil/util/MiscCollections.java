@@ -1,9 +1,6 @@
 package com.myjutil.util;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * User: liviu
@@ -36,23 +33,49 @@ public class MiscCollections {
 
     /**
      * like guava Strings.isNullOrEmpty
-     * @param collection
-     * @return
      */
     public static boolean isNullOrEmpty(Collection<?> collection) {
         return (collection == null) || collection.isEmpty();
+    }
+
+    public static boolean hasNull(Iterable<?> itbl) {
+        for (Object t : itbl) {
+            if (t == null) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static <T> Iterable<T> noNull(Iterable<T> itbl, String message) {
         if (itbl == null) {
             throw new IllegalArgumentException(message);
         }
-        for (T t : itbl) {
-            if (t == null) {
-                throw new IllegalArgumentException(message);
-            }
+        if (hasNull(itbl)) {
+            throw new IllegalArgumentException(message);
         }
         return itbl;
+    }
+
+    public static <T> Collection<T> newWithoutNulls(Collection<T> collection, Collection<T> returnCollection) {
+        for (T t : collection) {
+            if (t != null) {
+                returnCollection.add(t);
+            }
+        }
+        return returnCollection;
+    }
+
+    public static <T> List<T> newWithoutNulls(List<T> collection) {
+        return (List<T>) newWithoutNulls(collection, new ArrayList<T>());
+    }
+
+    public static <T> Set<T> newWithoutNulls(Set<T> collection) {
+        return (Set<T>) newWithoutNulls(collection, new HashSet<T>());
+    }
+
+    public static <T> List<T> selectNonNull(T... obj) {
+        return (List<T>) newWithoutNulls(Arrays.asList(obj), new ArrayList<T>());
     }
 
     public static <T> List<T> noneNull(List<T> list, String message) {

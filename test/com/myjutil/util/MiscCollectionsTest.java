@@ -24,4 +24,10 @@ public class MiscCollectionsTest {
         assertThat((List<String>) MiscCollections.examples(lst, 2), is(Arrays.asList("A")));
     }
 
+    @Test
+    public void testnnn() throws Exception {
+        List<String> lst = Arrays.asList("A",null, "B", "C", null);
+        List<String> nl = MiscCollections.newWithoutNulls(lst);
+        assertThat(nl, is(Arrays.asList("A", "B", "C")));
+    }
 }
