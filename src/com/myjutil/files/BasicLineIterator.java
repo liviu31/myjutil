@@ -29,6 +29,10 @@ public class BasicLineIterator implements Iterable<String> {
         return new BasicLineIterator(new BufferedReader(new FileReader(file)));
     }
 
+    public static BasicLineIterator create(BufferedReader br) throws FileNotFoundException {
+        return new BasicLineIterator(br);
+    }
+
     @Override
     public Iterator<String> iterator() {
         return new LineIterator(br);
