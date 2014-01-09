@@ -31,6 +31,18 @@ public class MiscCollections {
         return r;
     }
 
+    public static boolean equals(double[] v1, double v2[], double epsilon) {
+        if (v1.length != v2.length) {
+            return false;
+        }
+        for (int i = 0; i < v1.length; i++) {
+            if (!Numbers.doubleEquals(v1[i], v2[i], epsilon)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     /**
      * like guava Strings.isNullOrEmpty
      */
