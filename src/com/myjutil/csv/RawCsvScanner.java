@@ -80,5 +80,17 @@ public class RawCsvScanner {
         return substring;
     }
 
+    public int nextInt() {
+        return Integer.parseInt(next());
+    }
+
+    public long nextLong() {
+        return Long.parseLong(next());
+    }
+
+    public double nextDouble() {
+        return Double.parseDouble(next());
+    }
+
 
 }
