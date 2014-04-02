@@ -7,6 +7,16 @@ package com.myjutil.util;
  */
 public class Misc {
 
+    public static boolean areEqual(Object one, Object another){
+        if(one == another){
+            return true;
+        }
+        if(one == null || another ==null){
+            return false;
+        }
+        return one.equals(another);
+    }
+
     public static boolean isAnyNull(Object ...objs){
         for(Object obj:objs){
             if(obj == null){
