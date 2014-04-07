@@ -12,6 +12,16 @@ import static junit.framework.Assert.*;
 public class MiscTest {
 
     @Test
+    public void testAreEqual(){
+        assertTrue(Misc.areEqual("a", "a"));
+        assertTrue(Misc.areEqual(1, 1));
+        assertTrue(Misc.areEqual(null, null));
+        assertFalse(Misc.areEqual("a", null));
+        assertFalse(Misc.areEqual(null, "a"));
+        assertFalse(Misc.areEqual("b", "a"));
+    }
+
+    @Test
     public void testNoneNull() {
         Object a = new Object();
         String b = "AAAA";
