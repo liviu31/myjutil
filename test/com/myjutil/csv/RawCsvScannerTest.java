@@ -36,6 +36,28 @@ public class RawCsvScannerTest {
         assertEquals("Go get one now they are going fast", rcv.next());
     }
 
+
+    @Test
+    public void testBasicNextIntLong() {
+        String s = "1997,Ford,E350,\"Super, \"\"luxurious\"\" truck\",\"\",aaa,,a1"+System.lineSeparator()
+                +"1997,Ford,E350,\"Go get one now they are going fast\"";
+
+        BufferedReader br = new BufferedReader(new StringReader(s));
+        RawCsvScanner rcv = new RawCsvScanner(br);
+        assertEquals(1997, rcv.nextInt());
+        assertEquals("Ford", rcv.next());
+        assertEquals("E350", rcv.next());
+        assertEquals("Super, \"luxurious\" truck", rcv.next());
+        assertEquals("", rcv.next());
+        assertEquals("aaa", rcv.next());
+        assertEquals("", rcv.next());
+        assertEquals("a1", rcv.next());
+        assertEquals(1997L, rcv.nextLong());
+        assertEquals("Ford", rcv.next());
+        assertEquals("E350", rcv.next());
+        assertEquals("Go get one now they are going fast", rcv.next());
+    }
+
     @Test
     public void testBasicNextLine() {
         String s = "1997,Ford,E350,\"Super, \"\"luxurious\"\" truck\",\"\",aaa,,a1"+System.lineSeparator()

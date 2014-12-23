@@ -7,6 +7,8 @@ package com.myjutil.util;
  */
 public class Misc {
 
+    //Objects.equals
+    @Deprecated
     public static boolean areEqual(Object one, Object another){
         if(one == another){
             return true;
