@@ -1,5 +1,7 @@
 package com.myjutil.util;
 
+import java.util.Arrays;
+
 /**
  * User: liviu
  * Date: 12/12/13
@@ -17,6 +19,12 @@ public class Misc {
             return false;
         }
         return one.equals(another);
+    }
+
+    static <T> T[] append(T[] v, T element) {
+        v = Arrays.copyOf(v, v.length + 1);
+        v[v.length] = element;
+        return v;
     }
 
     public static boolean isAnyNull(Object ...objs){
