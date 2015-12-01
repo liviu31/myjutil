@@ -10,6 +10,11 @@ import java.util.function.Function;
  */
 public class MiscMaps {
 
+    public static <T,K> T get(Map<K,T> map, K key, T def) {
+        T val = map.get(key);
+        return Misc.defaultIfNull(val, def);
+    }
+
     public static <K, T> Map<K, T> parse(String strMap, String entrySeparator, String keyValueSeparator,
                                          Function<String, K> key, Function<String, T> value) {
         if (value == null) {

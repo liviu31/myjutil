@@ -9,6 +9,10 @@ import java.util.Arrays;
  */
 public class Misc {
 
+    public static  <T> T defaultIfNull(T val, T def) {
+        return val == null ? def : val;
+    }
+
     //Objects.equals
     @Deprecated
     public static boolean areEqual(Object one, Object another){
@@ -21,7 +25,6 @@ public class Misc {
         return one.equals(another);
     }
 
-    //test
     static <T> T[] append(T[] v, T element) {
         v = Arrays.copyOf(v, v.length + 1);
         v[v.length] = element;
@@ -45,5 +48,7 @@ public class Misc {
     public static boolean noneNull(Object ...objs){
         return !isAnyNull(objs);
     }
+
+    //TODO list to primitive array
 
 }
