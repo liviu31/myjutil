@@ -1,9 +1,6 @@
 package com.myjutil.util;
 
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 /**
  * User: liviu
@@ -12,9 +9,9 @@ import java.util.NoSuchElementException;
  */
 public class MultiIterable<I> implements Iterable<I> {
 
-    private final List<Iterable<I>> iterators;
+    private final Iterable<Iterable<I>> iterators;
 
-    private MultiIterable(List<Iterable<I>> iterators) {
+    private MultiIterable(Iterable<Iterable<I>> iterators) {
         this.iterators = iterators;
     }
 
@@ -38,7 +35,7 @@ public class MultiIterable<I> implements Iterable<I> {
 
         Iterator<I> current;
 
-        public CompositeIterator(List<Iterable<I>> iterators) {
+        public CompositeIterator(Iterable<Iterable<I>> iterators) {
             it = iterators.iterator();
         }
 

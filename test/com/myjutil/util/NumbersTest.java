@@ -2,7 +2,11 @@ package com.myjutil.util;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static junit.framework.Assert.*;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 
 /**
  * User: liviu
@@ -22,5 +26,12 @@ public class NumbersTest {
         assertTrue(Numbers.floatEquals(10f, 10f, .000001f));
         assertTrue(Numbers.floatEquals(1f / 3 * 10, 10f / 3, .000001f));
     }
+
+    @Test
+    public void testCloseTo(){
+        int pos = Numbers.closeTo(11, Arrays.asList(1 ,2, 10, 5, 6));
+        assertThat(pos, is(2));
+    }
+
 
 }
