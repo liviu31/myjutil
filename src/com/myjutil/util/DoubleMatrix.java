@@ -55,4 +55,42 @@ public class DoubleMatrix {
         return result;
     }
 
+    /**
+     * You are given a 2D matrix, a, of dimension MxN and a positive integer R. You have to rotate the matrix R times
+     * and print the resultant matrix. Rotation should be in anti-clockwise direction.
+     * @param matrix
+     * @param rotate
+     */
+
+    private static void rotate(int[][] matrix, int rotate) {
+        int level = 0;
+
+        int n = matrix.length;
+        int m = matrix[0].length;
+        while (true) {
+            int tmpR = rotate % (2 * (m + n - 4*level  - 2));
+            for (int r = 0; r < tmpR; r++) {
+                int carry = matrix[level][level];
+                for (int i = level; i < m - level - 1; i++) {
+                    matrix[level][i] = matrix[level][i + 1];
+                }
+                for (int i = level; i < n - level - 1; i++) {
+                    matrix[i][m - level - 1] = matrix[i + 1][m - level - 1];
+                }
+                for (int i = m - level - 1; i > level; i--) {
+                    matrix[n - level - 1][i] = matrix[n - level - 1][i - 1];
+                }
+                for (int i = n - level - 1; i > level; i--) {
+                    matrix[i][level] = matrix[i - 1][level];
+                }
+                matrix[level + 1][level] = carry;
+            }
+            level++;
+            if (level >= Math.min(n, m) / 2) {
+                break;
+            }
+        }
+        //System.out.println("done");
+    }
+
 }
