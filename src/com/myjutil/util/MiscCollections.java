@@ -78,6 +78,16 @@ public class MiscCollections {
         return returnCollection;
     }
 
+    public static <T> void reverse(Queue<T> queue) {
+        Deque<T> stack = new LinkedList<>();
+        while (!queue.isEmpty()) {
+            stack.push(queue.poll());
+        }
+        while (!stack.isEmpty()) {
+            queue.add(stack.pop());
+        }
+    }
+
     public static <T> List<T> newWithoutNulls(List<T> collection) {
         return (List<T>) newWithoutNulls(collection, new ArrayList<T>());
     }
