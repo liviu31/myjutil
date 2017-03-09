@@ -25,4 +25,8 @@ public class J8 {
         return in.stream().mapToDouble(Long::doubleValue).boxed()
                 .collect(Collectors.toList());
     }
+
+    public static <K, V> Map<K, V> map(Collection<V> in, Function<? super V, ? extends K> keyMapper) {
+        return in.stream().collect(Collectors.toMap(keyMapper, x -> x));
+    }
 }
