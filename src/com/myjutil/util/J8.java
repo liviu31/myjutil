@@ -27,6 +27,6 @@ public class J8 {
     }
 
     public static <K, V> Map<K, V> map(Collection<V> in, Function<? super V, ? extends K> keyMapper) {
-        return in.stream().collect(Collectors.toMap(keyMapper, x -> x));
+        return in.stream().collect(Collectors.toMap(keyMapper, Function.identity()));
     }
 }
